@@ -1,0 +1,113 @@
+/* Импорт шрифтов Lato */
+@font-face {
+  font-family: "Lato-Medium";
+  src: url("../fonts/Lato-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lato-Regular";
+  src: url("../fonts/Lato-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans flex text-gray-800;
+  }
+  h1 {
+    @apply text-4xl font-bold;
+  }
+  h2 {
+    @apply text-3xl font-bold;
+  }
+  h3 {
+    @apply text-2xl font-semibold;
+  }
+  button {
+    @apply transition-all duration-200;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-2 rounded-md font-medium shadow-md hover:bttn-hover  transition-all duration-200;
+  }
+  .btn-primary {
+    @apply bg-[#133C6B] text-white;
+  }
+  .btn-secondary {
+    @apply bg-white text-primary border border-primary;
+  }
+  .btn-primary-outline {
+    @apply bg-white text-primary border border-primary;
+  }
+  .container-custom {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  .bttn-hover {
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Стили для логотипов школ */
+  .logos-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 1rem 0;
+  }
+
+  .logos-scroll {
+    display: flex;
+    width: fit-content;
+  }
+}
+
+@layer utilities {
+  /* Класс для скрытия полосы прокрутки */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE и Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* Анимация бесконечной прокрутки */
+  @keyframes scrollLeftToRight {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% / 2));
+    }
+  }
+
+  @keyframes scrollRightToLeft {
+    0% {
+      transform: translateX(calc(-100% / 2));
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .animate-scroll {
+    display: flex;
+    animation: scrollLeftToRight 20s linear infinite;
+    will-change: transform;
+  }
+
+  .animate-scroll-reverse {
+    display: flex;
+    animation: scrollRightToLeft 20s linear infinite;
+    will-change: transform;
+  }
+}
