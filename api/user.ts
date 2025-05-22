@@ -1,12 +1,13 @@
-const baseUrl = process.env.BASE_URL;
-
 export const userApi = {
   login: async (email: string, password: string) => {
-    console.log(baseUrl, process.env.BASE_URL);
     const { data } = await useFetch(`auth/login`, {
-      baseURL: baseUrl,
+      baseURL: useRuntimeConfig().public.baseUrl,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
       method: "POST",
-      body: { email, password },
+      body: `grant_type=password&username=${email}&password=${password}`,
     });
     return data;
   },

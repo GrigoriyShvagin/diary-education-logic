@@ -1,75 +1,71 @@
-# Nuxt Minimal Starter
+## Технологии
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+- ⚡ [Nuxt 3](https://nuxt.com/) - современный фреймворк на Vue.js
+- 🎨 [TailwindCSS](https://tailwindcss.com/) - утилитарный CSS-фреймворк
+- 💾 [Pinia](https://pinia.vuejs.org/) - управление состоянием
 
-## Setup
+## Установка и запуск
 
-Make sure to install dependencies:
+### Предварительные требования
+
+- Node.js (v18 или выше)
+- npm или yarn
+
+### Установка зависимостей
 
 ```bash
 # npm
 npm install
 
-# pnpm
-pnpm install
-
 # yarn
 yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+### Настройка окружения
 
-Start the development server on `http://localhost:3000`:
+Создайте файл `.env` в корне проекта:
+
+```
+NUXT_PUBLIC_API_BASE=https://your-api-url.com
+```
+
+### Запуск для разработки
 
 ```bash
 # npm
 npm run dev
 
-# pnpm
-pnpm dev
-
 # yarn
 yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
+### Сборка для продакшн
 
 ```bash
 # npm
 npm run build
 
-# pnpm
-pnpm build
-
 # yarn
 yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+## Структура проекта
 
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+.
+├── api/                # API-клиенты и запросы
+├── assets/             # Стили, изображения и другие ресурсы
+├── components/         # Vue компоненты
+├── composables/        # Композиционные функции
+├── layouts/            # Шаблоны страниц
+│   ├── AuthLayout.vue  # Шаблон для страниц аутентификации
+│   └── MainLayout.vue  # Основной шаблон приложения
+├── pages/              # Страницы приложения
+│   ├── auth.vue        # Страница авторизации
+│   └── index.vue       # Главная страница
+├── public/             # Статические файлы
+├── stores/             # Pinia хранилища
+├── types/              # TypeScript типы и интерфейсы
+├── app.vue             # Входная точка приложения
+└── nuxt.config.ts      # Конфигурация Nuxt.js
+```
