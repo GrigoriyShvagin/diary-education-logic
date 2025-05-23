@@ -14,8 +14,24 @@ const isPasswordActive = computed(
 
 const handleLogin = async () => {
   loading.value = true;
-  const response = await userApi.login(email.value, password.value);
-  console.log(response);
+  try {
+    const { login } = useUser();
+    const result = await login(email.value, password.value);
+
+    if (result.success) {
+      await useUser().getMe();
+
+      await navigateTo("/");
+    } else {
+      console.error("Ошибка при входе:", result.error);
+      // alert("Неверный email или пароль");
+    }
+  } catch (error) {
+    console.error("Ошибка при входе:", error);
+    // alert("Произошла ошибка при входе в систему");
+  } finally {
+    loading.value = false;
+  }
 };
 </script>
 

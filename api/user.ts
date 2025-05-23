@@ -1,6 +1,19 @@
+import type {
+  ApiResponse,
+  MeResponse,
+  UserMeApiResponse,
+} from "~/types/user.types";
+import { apiRequest } from "./index";
+
 export const userApi = {
-  login: async (email: string, password: string) => {
-    const { data } = await useFetch(`auth/login`, {
+  login: async (
+    email: string,
+    password: string
+  ): Promise<{
+    data: any;
+    error: any;
+  }> => {
+    return await useFetch(`auth/login`, {
       baseURL: useRuntimeConfig().public.baseUrl,
       headers: {
         Accept: "application/json",
@@ -8,7 +21,13 @@ export const userApi = {
       },
       method: "POST",
       body: `grant_type=password&username=${email}&password=${password}`,
+      credentials: "include",
     });
-    return data;
+  },
+
+  me: async () => {
+    return await apiRequest<ApiResponse<MeResponse>>("/users/me", {
+      method: "GET",
+    });
   },
 };
